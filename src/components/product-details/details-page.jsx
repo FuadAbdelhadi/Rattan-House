@@ -7,10 +7,10 @@ import Inquire from "./inquire";
 const DetailsPage = () => {
   // Images array defined inside the component
   const images = [
-    "images/product-example1.svg",
-    "images/product-example2.svg",
-    "images/product-example3.svg",
-    "images/product-example4.svg"
+    "/Rattan-House/images/product-example1.svg",
+    "/Rattan-House/images/product-example2.svg",
+    "/Rattan-House/images/product-example3.svg",
+    "/Rattan-House/images/product-example4.svg"
   ];
 
   // State to track the currently selected image

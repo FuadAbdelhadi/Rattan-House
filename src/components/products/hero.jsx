@@ -7,7 +7,7 @@ function setMobileHeight() {
 
 const HeroSection = () => {
   return (
-    <div className="hero-section pb-5"style={{  backgroundImage: 'url(images/dinning-sets-hero.svg)' }}>
+    <div className="hero-section pb-5"style={{  backgroundImage: 'url(/Rattan-House/images/dinning-sets-hero.svg)' }}>
     </div>
   );
 };

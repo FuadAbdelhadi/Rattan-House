@@ -12,7 +12,7 @@ const HeroSection = () => {
         {/* Left Social Icon */}
         <div className="col-2 text-center">
           <a href="#" className="hero-socials-images">
-            <img src="/images/whatsApp.svg" alt="WhatsApp" />
+            <img src="//Rattan-House/images/whatsApp.svg" alt="WhatsApp" />
           </a>
         </div>
 
@@ -40,7 +40,7 @@ const HeroSection = () => {
               ].map((item, index) => (
                 <div className="col py-3" key={index}>
                   <a href="#" className="products">
-                    <img src={`/images/${item.src}`} alt={item.title} />
+                    <img src={`//Rattan-House/images/${item.src}`} alt={item.title} />
                     <h5 className="mt-2">{item.title}</h5>
                   </a>
                 </div>
@@ -53,7 +53,7 @@ const HeroSection = () => {
         {/* Right Social Icon */}
         <div className="col-2 text-center">
           <a href="#" className="hero-socials-images">
-            <img src="/images/messages.svg" alt="Messages" />
+            <img src="//Rattan-House/images/messages.svg" alt="Messages" />
           </a>
         </div>
       </div>

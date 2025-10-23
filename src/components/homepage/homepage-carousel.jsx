@@ -26,27 +26,27 @@ const ImageCarousel = () => {
 
   const images = [
     {
-      src: "images/carousel image.svg",
+      src: "/Rattan-House/images/carousel image.svg",
       title: "01 LIVING SETS",
     },
     {
-      src: "images/carousel image.svg",
+      src: "/Rattan-House/images/carousel image.svg",
       title: "02 DINING SETS",
     },
     {
-      src: "images/carousel image.svg",
+      src: "/Rattan-House/images/carousel image.svg",
       title: "03 RUGS",
     },
     {
-      src: "images/carousel image.svg",
+      src: "/Rattan-House/images/carousel image.svg",
       title: "04 UMBRELLAS",
     },
     {
-      src: "images/carousel image.svg",
+      src: "/Rattan-House/images/carousel image.svg",
       title: "05 SUN BEDS",
     },
     {
-      src: "images/carousel image.svg",
+      src: "/Rattan-House/images/carousel image.svg",
       title: "06 LONG CHAIRS",
     },
   ];

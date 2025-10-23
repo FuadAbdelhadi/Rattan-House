@@ -5,8 +5,8 @@ const SalesSection = () => {
             <div className="row m-0">
                 <div className="col-12 col-md-3 px-4">
                     <div className="sales-images-container">
-                        <img className="sales-first-image" src="images/sales-dining set.svg" alt="" />
-                        <img className="sales-second-image" src="images/miami stool.svg" alt="" />
+                        <img className="sales-first-image" src="/Rattan-House/images/sales-dining set.svg" alt="" />
+                        <img className="sales-second-image" src="/Rattan-House/images/miami stool.svg" alt="" />
                     </div>
                     <div className="d-flex justify-content-between align-items-center">
                         <h5>DINING SET</h5>
@@ -15,8 +15,8 @@ const SalesSection = () => {
                 </div>
                 <div className="col-12 col-md-3 px-4">
                     <div className="sales-images-container">
-                        <img className="sales-first-image" src="images/sales-dining set.svg" alt="" />
-                        <img className="sales-second-image" src="images/miami stool.svg" alt="" />
+                        <img className="sales-first-image" src="/Rattan-House/images/sales-dining set.svg" alt="" />
+                        <img className="sales-second-image" src="/Rattan-House/images/miami stool.svg" alt="" />
                     </div>
                     <div className="d-flex justify-content-between align-items-center">
                         <h5>MIAMI STOOL</h5>
@@ -25,8 +25,8 @@ const SalesSection = () => {
                 </div>
                 <div className="col-12 col-md-3 px-4">
                     <div className="sales-images-container">
-                        <img className="sales-first-image" src="images/sales-dining set.svg" alt="" />
-                        <img className="sales-second-image" src="images/miami stool.svg" alt="" />
+                        <img className="sales-first-image" src="/Rattan-House/images/sales-dining set.svg" alt="" />
+                        <img className="sales-second-image" src="/Rattan-House/images/miami stool.svg" alt="" />
                     </div>
                     <div className="d-flex justify-content-between align-items-center">
                         <h5>RUGS</h5>
@@ -35,8 +35,8 @@ const SalesSection = () => {
                 </div>
                 <div className="col-12 col-md-3 px-4">
                     <div className="sales-images-container">
-                        <img className="sales-first-image" src="images/sales-dining set.svg" alt="" />
-                        <img className="sales-second-image" src="images/miami stool.svg" alt="" />
+                        <img className="sales-first-image" src="/Rattan-House/images/sales-dining set.svg" alt="" />
+                        <img className="sales-second-image" src="/Rattan-House/images/miami stool.svg" alt="" />
                     </div>
                     <div className="d-flex justify-content-between align-items-center">
                         <h5>UMBRELLAS</h5>

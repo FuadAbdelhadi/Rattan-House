@@ -3,7 +3,7 @@ const HomepageImageWithText = () => {
         <div className="container my-5">
             <div className="row m-0">
                 <div className="col-12 col-md-8">
-                    <img className="homepage-side-image" src="images/image-with-text.svg" alt="" />
+                    <img className="homepage-side-image" src="/Rattan-House/images/image-with-text.svg" alt="" />
                 </div>
                 <div className="col-12 col-md-4 text-end d-flex flex-column justify-content-center align-items-end">
                     <h1> Mastercrafted Rattan, Built for Decades.</h1>

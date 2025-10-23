@@ -18,7 +18,7 @@ const ProductsShowCase = () => {
                     ].map((item, index) => (
                     <div className="col py-3" key={index}>
                         <Link className="products" to="/ProductDetails">
-                            <img src={`/images/${item.src}`} alt={item.title} />
+                            <img src={`Rattan-House/images/${item.src}`} alt={item.title} />
                             <h5 className="mt-2">{item.title}</h5>
                         </Link>
                     </div>
