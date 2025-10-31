@@ -1,22 +1,41 @@
-import { useState } from "react";
 import Inquire from "./inquire";
+import { productsApi } from "../../api";
+import { useEffect, useState } from "react";
 
 
 
 
 const DetailsPage = () => {
-  // Images array defined inside the component
-  const images = [
-    "/Rattan-House/images/product-example1.svg",
-    "/Rattan-House/images/product-example2.svg",
-    "/Rattan-House/images/product-example3.svg",
-    "/Rattan-House/images/product-example4.svg"
-  ];
 
-  // State to track the currently selected image
-  const [mainImage, setMainImage] = useState(images[0]);
 
+  const [products, setProducts] = useState([]);
+  const [mainImage, setMainImage] = useState(""); // currently displayed image
   const [showModal, setShowModal] = useState(false);
+  const [currentProduct, setCurrentProduct] = useState(null); // selected product
+
+  useEffect(() => {
+    productsApi
+      .getAllProducts()
+      .then((data) => {
+        setProducts(data);
+
+        // Optionally, pick the first product to display
+        if (data.length > 0) {
+          setCurrentProduct(data[0]);
+          // Set main image to first image of that product
+          if (Array.isArray(data[0].images) && data[0].images.length > 0) {
+            setMainImage(`${import.meta.env.BASE_URL}images/${data[0].images[0]}`);
+          }
+        }
+      })
+      .catch((err) => console.error("Error fetching products:", err));
+  }, []);
+
+  if (!currentProduct) return <p>Loading...</p>;
+
+  const productImages = Array.isArray(currentProduct.images)
+    ? currentProduct.images
+    : [];
 
   return (
     <div className="container details-page-container my-4 mt-5">
@@ -33,28 +52,28 @@ const DetailsPage = () => {
 
         {/* Right: Small images and button */}
         <div className="col-md-5 d-flex flex-column align-items-start details-page-right-side">
-            <div className="d-flex flex-wrap justify-content-center mb-3">
-                {images.map((img, index) => (
-                <img
-                    key={index}
-                    src={img}
-                    alt={`Thumbnail ${index}`}
-                    className="img-thumbnail m-1"
-                    style={{
-                    width: "120px",
-                    height: "120px",
-                    objectFit: "contain",
-                    cursor: "pointer",
-                    border: mainImage === img ? "2px solid black" : "1px solid #ddd"
-                    }}
-                    onClick={() => setMainImage(img)}
-                />
-                ))}
-            </div>
-
-            {/* <button className="btn btn-dark btn-block mt-3" data-bs-toggle="modal" data-bs-target="#inquireModal" type="button">
-                INQUIRE now
-            </button> */}
+          <div className="d-flex flex-wrap justify-content-center mb-3">
+            {productImages.map((img, index) => (
+              <img
+                key={index}
+                src={`${import.meta.env.BASE_URL}images/${img}`}
+                alt={`Thumbnail ${index}`}
+                className="img-thumbnail m-1"
+                style={{
+                  width: "120px",
+                  height: "120px",
+                  objectFit: "contain",
+                  cursor: "pointer",
+                  border: mainImage.endsWith(img)
+                    ? "2px solid black"
+                    : "1px solid #ddd"
+                }}
+                onClick={() =>
+                  setMainImage(`${import.meta.env.BASE_URL}images/${img}`)
+                }
+              />
+            ))}
+          </div>
 
             <button className="btn btn-dark btn-block mt-3" onClick={() => setShowModal(true)}>
                 INQUIRE now

@@ -135,6 +135,8 @@
   object-fit: contain;
   width: 100%;
   height: 300px;
+  min-width: 100%;
+  min-height: 300px;
 }
 
 .sales-second-image{

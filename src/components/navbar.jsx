@@ -1,13 +1,28 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { productsApi, categoriesApi } from "../api";
+
+
+
 
 
 const Navbar = () => {
 
+  const [categories, setProducts] = useState([]);
+
+  useEffect(() => {
+    categoriesApi.getAllCategories()
+      .then((data) => setProducts(data))
+      .catch((err) => console.error("Error fetching categories:", err));
+  }, []);
+
+
   const location = useLocation();
 
   // Check if the current path includes "/ProductDetails"
-  const isProductDetailsPage = location.pathname.includes("/ProductDetails");
+  const isProductDetailsPage = location.pathname.includes("/productdetails");
+  
   
   return (
     <header className={`navbar-container ${isProductDetailsPage ? "navbar-product-details" : ""}`}>
@@ -61,26 +76,11 @@ const Navbar = () => {
                   className="collapse row navbar-collapse-product"
                   id="collapseExample"
                 >
-                  {[
-                    "DINING SETS",
-                    "BAR STOOLS",
-                    "COCKTAIL TABLE",
-                    "OUTDOOR SETS",
-                    "LAMPS",
-                    "BEAN BAGS",
-                    "TABLES",
-                    "SWINGS",
-                    "DAYBEDS",
-                    "CHAIRS",
-                    "SUNBEDS",
-                    "SHADES",
-                    "FIRE PITS",
-                    "ACCESSORIES",
-                    "OUTDOOR RUGS",
-                  ].map((item, index) => (
+                  {categories.map((item, index) => (
                     <div className="col-4" key={index}>
-                      <Link className="dropdown-item" to="/product">
-                        {item}
+                      <Link className="products" to={`/product/${item.id}`}>
+                          <img src={item.image} alt={item.name} />
+                          <h5 className="mt-2">{item.name}</h5>
                       </Link>
                     </div>
                   ))}
