@@ -1,6 +1,8 @@
 import Inquire from "./inquire";
 import { productsApi } from "../../api";
 import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+
 
 
 
@@ -8,34 +10,37 @@ import { useEffect, useState } from "react";
 const DetailsPage = () => {
 
 
-  const [products, setProducts] = useState([]);
-  const [mainImage, setMainImage] = useState(""); // currently displayed image
+  const [product, setProduct] = useState(null);
+  const [mainImage, setMainImage] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [currentProduct, setCurrentProduct] = useState(null); // selected product
+  const { id } = useParams();
 
   useEffect(() => {
-    productsApi
-      .getAllProducts()
-      .then((data) => {
-        setProducts(data);
+    if (!id) return;
 
-        // Optionally, pick the first product to display
-        if (data.length > 0) {
-          setCurrentProduct(data[0]);
-          // Set main image to first image of that product
-          if (Array.isArray(data[0].images) && data[0].images.length > 0) {
-            setMainImage(`${import.meta.env.BASE_URL}images/${data[0].images[0]}`);
-          }
+    productsApi
+      .getProductById(id)
+      .then((data) => {
+        // ✅ API returns an array with one product
+        const productData = Array.isArray(data) ? data[0] : data;
+        console.log("Fetched product:", productData);
+
+        setProduct(productData);
+
+        // ✅ Safely set main image
+        if (Array.isArray(productData.images) && productData.images.length > 0) {
+          setMainImage(productData.images[0]);
         }
       })
-      .catch((err) => console.error("Error fetching products:", err));
-  }, []);
+      .catch((err) => console.error("Error fetching product:", err));
+  }, [id]);
 
-  if (!currentProduct) return <p>Loading...</p>;
+  if (!product) return <p>Loading...</p>;
 
-  const productImages = Array.isArray(currentProduct.images)
-    ? currentProduct.images
-    : [];
+  const productImages = Array.isArray(product.images) ? product.images : [];
+  console.log(productImages, "main image");
+  
+  
 
   return (
     <div className="container details-page-container my-4 mt-5">
@@ -56,7 +61,7 @@ const DetailsPage = () => {
             {productImages.map((img, index) => (
               <img
                 key={index}
-                src={`${import.meta.env.BASE_URL}images/${img}`}
+                src={img}
                 alt={`Thumbnail ${index}`}
                 className="img-thumbnail m-1"
                 style={{
@@ -69,15 +74,22 @@ const DetailsPage = () => {
                     : "1px solid #ddd"
                 }}
                 onClick={() =>
-                  setMainImage(`${import.meta.env.BASE_URL}images/${img}`)
+                  setMainImage(`${img}`)
                 }
               />
             ))}
           </div>
+          
+          <h3>{product.name}</h3>
 
-            <button className="btn btn-dark btn-block mt-3" onClick={() => setShowModal(true)}>
+          <div className="d-flex justify-content-start align-items-center mt-3">
+            <button className="btn btn-dark btn-block" onClick={() => setShowModal(true)}>
                 INQUIRE now
             </button>
+
+            <h3 className="m-0 ms-3">Price: ${product.price}</h3>
+          </div>
+
 
 
             <Inquire show={showModal} onClose={() => setShowModal(false)} title="My Modal">
@@ -107,7 +119,10 @@ const DetailsPage = () => {
                 </form>
             </Inquire>
 
-            <h3 className="mt-auto">details</h3>
+            <h3 className="mt-5">Details:</h3>
+            <p>{product.description}</p>
+            <h3 className="mt-auto">Specs:</h3>
+            <p>{product.specs}</p>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ export const getAllProducts = async () => {
 };
 
 export const getProductById = async (id) => {
-  const res = await axiosInstance.get(`/api/get_single_product.php?${id}`);
+  const res = await axiosInstance.get(`/api/get_single_product.php?id=${id}`);
   return res.data;
 };
 

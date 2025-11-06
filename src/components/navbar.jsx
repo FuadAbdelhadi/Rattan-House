@@ -72,7 +72,7 @@ const Navbar = () => {
                   PRODUCTS
                 </Link>
 
-                <div
+                {/* <div
                   className="collapse row navbar-collapse-product"
                   id="collapseExample"
                 >
@@ -84,7 +84,7 @@ const Navbar = () => {
                       </Link>
                     </div>
                   ))}
-                </div>
+                </div> */}
               </li>
 
               <li className="nav-item">

@@ -26,9 +26,9 @@ const ProductsShowCase = () => {
             {filteredProducts.length > 0 ? (
               filteredProducts.map((item, index) => (
                 <div className="col py-3" key={index}>
-                  <Link className="products" to={`/product/${item.id}`}>
+                  <Link className="products" to={`/productdetails/${item.id}`}>
                     <img
-                      src={`${import.meta.env.BASE_URL}images/${item.image}`}
+                      src={item.images[0]}
                       alt={item.name}
                     />
                     <h5 className="mt-2">{item.name}</h5>

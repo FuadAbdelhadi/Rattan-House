@@ -1,6 +1,8 @@
 import Slider from "react-slick";
 import { categoriesApi } from "../../api";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 
 
 const ImageCarousel = () => {
@@ -43,18 +45,19 @@ const ImageCarousel = () => {
         {categories.map((item, index) => (
           <div key={index} className="px-2">
             <div className="carousel-card position-relative rounded overflow-hidden">
-                <div className="carousel-title mb-3">
-                {item.name}
+              <div className="carousel-title mb-3">
+                <h5>{index + 1} {item.name}</h5>
               </div>
-              <img
-                src={item.image}
+               <Link className="navbar-brand" to={`/category/${item.id}`}>
+                <img src={item.image}
                 alt={item.name}
                 className="img-fluid w-100"
                 style={{
                   height: "300px",
                   objectFit: "cover",
-                }}
-              />
+                }} />
+              </Link>
+              
               
             </div>
           </div>
