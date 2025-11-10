@@ -27,7 +27,7 @@ const HeroSection = () => {
         {/* Left Social Icon */}
         {/* <div className="col-2 text-center">
           <a href="#" className="hero-socials-images">
-            <img src="/images/whatsApp.svg" alt="WhatsApp" />
+            <img src="https://fuadabdelhadi.github.io/Rattan-House/images/whatsApp.svg" alt="WhatsApp" />
           </a>
         </div> */}
 
@@ -53,7 +53,7 @@ const HeroSection = () => {
         {/* Right Social Icon */}
         {/* <div className="col-2 text-center">
           <a href="#" className="hero-socials-images">
-            <img src="/images/messages.svg" alt="Messages" />
+            <img src="https://fuadabdelhadi.github.io/Rattan-House/images/messages.svg" alt="Messages" />
           </a>
         </div> */}
       </div>
