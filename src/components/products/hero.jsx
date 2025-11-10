@@ -31,11 +31,11 @@ const HeroSection = () => {
             setHeroImage(selectedCategory.hero_image);
           } else {
             // fallback hero image if no hero_image found
-            setHeroImage("/Rattan-House/images/dinning-sets-hero.svg");
+            setHeroImage("/images//dinning-sets-hero.svg");
           }
         } else {
           // fallback for pages without id
-          setHeroImage("/Rattan-House/images/dinning-sets-hero.svg");
+          setHeroImage("/images//dinning-sets-hero.svg");
         }
       })
       .catch((err) => console.error("Error fetching categories:", err));
@@ -48,7 +48,7 @@ const HeroSection = () => {
         {/* Left Social Icon */}
         {/* <div className="col-2 text-center">
           <a href="#" className="hero-socials-images">
-            <img src="/Rattan-House/images/whatsApp.svg" alt="WhatsApp" />
+            <img src="/images//whatsApp.svg" alt="WhatsApp" />
           </a>
         </div> */}
 
@@ -74,7 +74,7 @@ const HeroSection = () => {
         {/* Right Social Icon */}
         {/* <div className="col-2 text-center">
           <a href="#" className="hero-socials-images">
-            <img src="/Rattan-House/images/messages.svg" alt="Messages" />
+            <img src="/images//messages.svg" alt="Messages" />
           </a>
         </div> */}
       </div>

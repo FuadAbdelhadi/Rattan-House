@@ -38,7 +38,6 @@ const DetailsPage = () => {
   if (!product) return <p>Loading...</p>;
 
   const productImages = Array.isArray(product.images) ? product.images : [];
-  console.log(productImages, "main image");
   
   
 

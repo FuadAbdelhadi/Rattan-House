@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "/api",
+  baseURL: "https://adamabzakh.tech/rattan",
   headers: {
     "Content-Type": "application/json",
   },

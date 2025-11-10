@@ -26,7 +26,7 @@
 }
 
 .hero-section{
-  background-image: url(/Rattan-House/images/hero-image.jpg);
+  background-image: url(/images//hero-image.jpg);
     background-color:  #332f1852; /* Black overlay with 50% opacity */
   background-blend-mode: overlay; /* or try multiply, darken, etc. */
   background-position: center;
@@ -79,7 +79,7 @@
 
 .search-box{
     background-color: transparent !important;
-    background-image: url(/Rattan-House/images/search.svg);
+    background-image: url(/images//search.svg);
     background-repeat: no-repeat;
     background-position: 95% 50%;
     background-size: 18px;
@@ -92,7 +92,7 @@
 .navbar-product-details .search-box{
   color: black !important;
   border-color: black;
-  background-image: url(/Rattan-House/images/search-black.svg);
+  background-image: url(/images//search-black.svg);
 }
 
 .dropdown-toggle::after{
