@@ -29,7 +29,7 @@ const Navbar = () => {
       <nav className="navbar navbar-inner-container navbar-expand-lg navbar-light">
         <div className="container-fluid">
           <Link className="navbar-brand navbar-brand-mobile" to="/">
-            <img src={isProductDetailsPage ? "/images//footer logo.svg" : "/images//logo 1.svg"}  alt="Logo" />
+            <img src={isProductDetailsPage ? "/images/footer logo.svg" : "/images/logo 1.svg"}  alt="Logo" />
           </Link>
 
           <button
@@ -49,7 +49,7 @@ const Navbar = () => {
             id="navbarSupportedContent"
           >
             <Link className="navbar-brand" to="/">
-              <img className="header-logo" src={isProductDetailsPage ? "/images//footer logo.svg" : "/images//logo 1.svg"}  alt="Logo" />
+              <img className="header-logo" src={isProductDetailsPage ? "/images/footer logo.svg" : "/images/logo 1.svg"}  alt="Logo" />
             </Link>
 
             <ul className="navbar-nav mb-2 mb-lg-0">
