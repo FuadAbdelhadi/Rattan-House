@@ -1,6 +1,8 @@
 import { Link, useParams } from "react-router-dom";
 import { productsApi } from "../../api";
 import { useEffect, useState } from "react";
+import { IMAGE_BASE_URL } from "../../config";
+
 
 const ProductsShowCase = () => {
 
@@ -17,6 +19,9 @@ const ProductsShowCase = () => {
     (product) => String(product.category_id) === String(id)
   );
 
+  console.log(filteredProducts);
+  
+
 
   return (
     <>
@@ -28,7 +33,7 @@ const ProductsShowCase = () => {
                 <div className="col py-3" key={index}>
                   <Link className="products" to={`/productdetails/${item.id}`}>
                     <img
-                      src={item.images[0]}
+                      src={IMAGE_BASE_URL + (item.images?.[0] || "")}
                       alt={item.name}
                     />
                     <h5 className="mt-2">{item.name}</h5>

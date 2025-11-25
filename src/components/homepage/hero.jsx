@@ -2,6 +2,8 @@
 import { productsApi, categoriesApi } from "../../api";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { IMAGE_BASE_URL } from "../../config";
+
 
 
 
@@ -40,7 +42,7 @@ const HeroSection = () => {
               {categories.map((item, index) => (
                 <div className="col-3 py-3" key={index}>
                   <Link className="products" to={`/category/${item.id}`}>
-                      <img src={item.image} alt={item.name} />
+                      <img src={IMAGE_BASE_URL + item.image} alt={item.name} />
                       <h5 className="mt-2">{item.name}</h5>
                   </Link>
                 </div>

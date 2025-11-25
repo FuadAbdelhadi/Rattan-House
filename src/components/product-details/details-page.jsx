@@ -1,7 +1,9 @@
 import Inquire from "./inquire";
-import { productsApi } from "../../api";
+import { productsApi, inquireForm } from "../../api";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { IMAGE_BASE_URL } from "../../config";
+
 
 
 
@@ -35,9 +37,54 @@ const DetailsPage = () => {
       .catch((err) => console.error("Error fetching product:", err));
   }, [id]);
 
+  // console.log(product.price);
+
+  // const productPrice = product.price
+  
+
+  const [form, setForm] = useState({
+    client_name: "",
+    client_email: "",
+    client_phone: "",
+    address: "",
+    country: "",
+    message: "",
+    item_id: `https://fuadabdelhadi.github.io/Rattan-House/productdetails/${id}`,
+    total_amount: 0,
+    status: null,
+  });
+
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+      console.log(form); // <-- check here
+
+
+    try {
+      const response = await inquireForm.submitOrder(form);
+      console.log("Order submitted:", response);
+      // alert("Your order has been sent!");
+      setShowModal(false);
+    } catch (error) {
+      console.error("Submit error:", error);
+      alert("Something went wrong. Try again.");
+    }
+  };
+
+
   if (!product) return <p>Loading...</p>;
 
   const productImages = Array.isArray(product.images) ? product.images : [];
+
+
+  
+
   
   
 
@@ -47,7 +94,7 @@ const DetailsPage = () => {
         {/* Left: Big image */}
         <div className="col-md-7 mb-3">
           <img
-            src={mainImage}
+            src={IMAGE_BASE_URL + mainImage}
             alt="Main"
             className="img-fluid rounded"
             style={{ width: "100%", height: "450px", objectFit: "contain" }}
@@ -60,7 +107,7 @@ const DetailsPage = () => {
             {productImages.map((img, index) => (
               <img
                 key={index}
-                src={img}
+                src={IMAGE_BASE_URL + img}
                 alt={`Thumbnail ${index}`}
                 className="img-thumbnail m-1"
                 style={{
@@ -86,36 +133,92 @@ const DetailsPage = () => {
                 INQUIRE now
             </button>
 
-            <h3 className="m-0 ms-3">Price: ${product.price}</h3>
+            {/* <h3 className="m-0 ms-3">Price: ${product.price}</h3> */}
           </div>
 
 
 
             <Inquire show={showModal} onClose={() => setShowModal(false)} title="My Modal">
-                <form action="submit">
-                    <div className="row">
-                        <div className="col-6 text-center py-2">
-                            <input className="modal-form-input" type="text" placeholder="Enter your name"/>
-                        </div>
-                        <div className="col-6 text-center py-2">
-                            <input className="modal-form-input" type="text" placeholder="Enter your email address"/>
-                        </div>
-                        <div className="col-6 text-center py-2">
-                            <input className="modal-form-input" type="text" placeholder="Enter your phone Number"/>
-                        </div>
-                        <div className="col-6 text-center py-2">
-                            <input className="modal-form-input" type="text" placeholder="Enter your Address"/>
-                        </div>
-                        <div className="col-12 text-center py-2">
-                            <input className="modal-form-input" type="text" placeholder="Select Country"/>
-                        </div>
-                        <div className="col-12 text-center py-2">
-                            <textarea className="modal-text-area modal-form-input" name="" id="" rows={10} placeholder="Message"></textarea>
-                        </div>
+                <form onSubmit={handleSubmit}>
+                  <div className="row">
+
+                    <div className="col-6 text-center py-2">
+                      <input
+                        className="modal-form-input"
+                        type="text"
+                        name="client_name"
+                        placeholder="Enter your name"
+                        value={form.client_name}
+                        onChange={handleChange}
+                      />
                     </div>
-                    <button className="btn btn-dark" onClick={() => setShowModal(false)}>Close</button>
-                    <button className="btn btn-dark ms-2" type="submit">Send</button>
+
+                    <div className="col-6 text-center py-2">
+                      <input
+                        className="modal-form-input"
+                        type="email"
+                        name="client_email"
+                        placeholder="Enter your email address"
+                        value={form.client_email}
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    <div className="col-6 text-center py-2">
+                      <input
+                        className="modal-form-input"
+                        type="number"
+                        name="client_phone"
+                        placeholder="Enter your phone number"
+                        value={form.client_phone}
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    <div className="col-6 text-center py-2">
+                      <input
+                        className="modal-form-input"
+                        type="text"
+                        name="address"
+                        placeholder="Enter your address"
+                        value={form.address}
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    <div className="col-12 text-center py-2">
+                      <input
+                        className="modal-form-input"
+                        type="text"
+                        name="country"
+                        placeholder="Select country"
+                        value={form.country}
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    <div className="col-12 text-center py-2">
+                      <textarea
+                        className="modal-text-area modal-form-input"
+                        name="message"
+                        rows={10}
+                        placeholder="Message"
+                        value={form.message}
+                        onChange={handleChange}
+                      ></textarea>
+                    </div>
+
+                  </div>
+
+                  <button className="btn btn-dark" type="button" onClick={() => setShowModal(false)}>
+                    Close
+                  </button>
+
+                  <button className="btn btn-dark ms-2" type="submit">
+                    Send
+                  </button>
                 </form>
+
             </Inquire>
 
             <h3 className="mt-5">Details:</h3>

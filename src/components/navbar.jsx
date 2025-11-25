@@ -48,7 +48,7 @@ const Navbar = () => {
             className="collapse navbar-collapse justify-content-between"
             id="navbarSupportedContent"
           >
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand navbar-brand-logo" to="/">
               <img className="header-logo" src={isProductDetailsPage ? "https://fuadabdelhadi.github.io/Rattan-House/images/footer logo.svg" : "https://fuadabdelhadi.github.io/Rattan-House/images/logo 1.svg"}  alt="Logo" />
             </Link>
 
@@ -117,10 +117,10 @@ const Navbar = () => {
                   id="collapseExample2"
                 >
                   {[
-                    { name: "OUR STORY", path: "/about/story" },
-                    { name: "OUR PHILOSOPHY", path: "/about/philosophy" },
-                    { name: "OUR FACTORY", path: "/about/factory" },
-                    { name: "CONTACT US", path: "/contact" },
+                    { name: "OUR STORY", path: "#" },
+                    { name: "OUR PHILOSOPHY", path: "#" },
+                    { name: "OUR FACTORY", path: "#" },
+                    { name: "CONTACT US", path: "#" },
                   ].map((item, index) => (
                     <div key={index}>
                       <Link className="dropdown-item" to={item.path}>
@@ -140,7 +140,7 @@ const Navbar = () => {
       <hr className="mt-0 text-white header-seperator" />
 
       <div className="d-flex justify-content-end align-items-center">
-        <form className="d-flex">
+        {/* <form className="d-flex">
           <input
             className="form-control me-2 search-box"
             type="search"
@@ -150,7 +150,7 @@ const Navbar = () => {
             className="btn btn-outline-success search-button"
             type="submit"
           ></button>
-        </form>
+        </form> */}
       </div>
     </header>
   );

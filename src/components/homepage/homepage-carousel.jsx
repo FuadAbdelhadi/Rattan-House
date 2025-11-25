@@ -2,6 +2,8 @@ import Slider from "react-slick";
 import { categoriesApi } from "../../api";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { IMAGE_BASE_URL } from "../../config";
+
 
 
 
@@ -49,7 +51,7 @@ const ImageCarousel = () => {
                 <h5>{index + 1} {item.name}</h5>
               </div>
                <Link className="navbar-brand" to={`/category/${item.id}`}>
-                <img src={item.image}
+                <img src={IMAGE_BASE_URL + item.image}
                 alt={item.name}
                 className="img-fluid w-100"
                 style={{
